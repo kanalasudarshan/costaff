@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title> Costaff | Home</title>
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<link rel="stylesheet" href="../css/main.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script>
+	$(document).ready(function(){
+		$.get( "employeelist",null, function( data ) {
+			let restult=JSON.parse(data);
+			let html="";
+			$.each(restult,function(key,value){
+				html+="<tr>";
+					html+="<td>"+value.employeeId+"</td>";
+					html+="<td>"+value.fullName+"</td>";
+					html+="<td>"+value.userName+"</td>";
+					html+="<td>"+value.email+"</td>";
+					html+="<td>"+value.country+"</td>";
+					html+="<td>"+value.state+"</td>";
+					html+="<td>"+value.city+"</td>";
+				html+="</tr>";
+			});
+			$("#empList").html(html);
+		});
+	});
+	</script>
+	
+</head>
+<body>
+<div id="header">
+  <img src="http://costaffglobal.com/includefiles/assets/images/costaff_logo.png" width="400px"/>
+  <ul class="menuItems">
+      <li><a href='homepage.html' data-item='Home'>Home</a></li>
+	  <li  class="active"><a href='employees.html' data-item='About'>Employees</a></li>
+      <li><a href='about.html' data-item='About'>About</a></li>
+      <li><a href='projects.html' data-item='Projects'>Projects</a></li>
+      <li><a href='blog.html' data-item='Blog'>Blog</a></li>
+      <li><a href='contact.html' data-item='Contact'>Contact</a></li>
+    </ul>
+    <a href="../logout" class="logout">Logout</a>
+</div>
+<div id="container">
+	<div id="home">
+		<table class="rtable">
+		<thead>
+			<tr>
+				<th>Employee Id</th>
+				<th>Employee Name</th>
+				<th>User Name</th>
+				<th>Email</th>
+				<th>Country</th>
+				<th>State</th>
+				<th>City</th>
+			</tr>
+		</thead>
+		<tbody id="empList">
+			
+		</tbody>
+		</table>
+	</div>	
+</div>
+</body>
+</html>
